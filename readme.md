@@ -1,6 +1,6 @@
-# Tutorial: Analisis Regresi Berganda Otomatis Menggunakan Python
+# Tutorial: Analisis Regresi Linear Berganda Menggunakan Python
 
-Tutorial ini menunjukkan cara membuat program Python untuk melakukan uji t, uji F, dan menghitung koefisien determinasi dalam analisis regresi berganda secara otomatis, serta menghasilkan bagan dan laporan dalam format Excel yang sesuai dengan SPSS.
+Tutorial ini menunjukkan cara membuat program Python untuk melakukan uji parsial (uji t), uji simultan (uji F), dan menghitung koefisien determinasi dalam analisis regresi linear berganda. Program ini juga menghasilkan laporan dalam format Excel dan menampilkan bagan regresi.
 
 ## Langkah-langkah
 
@@ -12,7 +12,7 @@ Pastikan Anda sudah menginstal library yang dibutuhkan. Anda dapat menginstal se
 pip install pandas statsmodels matplotlib openpyxl
 ```
 
-### 2. Siapkan Data
+### 2. Siapkan Data (*pilih salah satu baik csv maupun xlsx)
 
 #### Contoh Format CSV
 
@@ -169,13 +169,14 @@ regression_analysis/
 ```
 
 Dengan mengikuti langkah-langkah ini, Anda akan dapat melakukan analisis regresi berganda secara otomatis dan mendapatkan laporan yang sesuai dengan SPSS dalam format Excel.
-Berikut adalah contoh hasil yang dapat dihasilkan oleh program Python yang telah kita buat, termasuk contoh laporan dalam format Excel dan bagan yang dihasilkan.
 
-### Contoh Hasil Program
+### 6. Contoh Hasil Program
 
-#### 1. Output di Terminal
+Setelah menjalankan program, Anda akan melihat output di terminal dan file Excel yang dihasilkan. Berikut adalah contoh hasil:
 
-Setelah menjalankan program, Anda akan melihat output hasil regresi di terminal. Contoh output:
+#### Output di Terminal
+
+Output yang dihasilkan di terminal akan memberikan detail statistik dari regresi berganda, termasuk uji parsial (uji t) dan uji simultan (uji F):
 
 ```
 Uji t, Uji F, dan Koefisien Determinasi
@@ -198,9 +199,9 @@ X3          0.8571      0.385       2.228   0.111    -0.336     2.051
 ==============================================================================
 ```
 
-#### 2. Laporan dalam Format Excel
+#### Laporan dalam Format Excel
 
-Program akan menghasilkan file Excel bernama `regression_report.xlsx`. Contoh isi laporan dalam Excel:
+File Excel `regression_report.xlsx` akan berisi laporan hasil regresi. Contoh isi laporan:
 
 |           | Coef. | Std.Err. | t       | P>|t|  | [0.025 | 0.975] |
 |-----------|-------|----------|---------|------|--------|--------|
@@ -209,24 +210,14 @@ Program akan menghasilkan file Excel bernama `regression_report.xlsx`. Contoh is
 | X2        | 0.0714| 0.352    | 0.203   | 0.848| -1.033 | 1.176  |
 | X3        | 0.8571| 0.385    | 2.228   | 0.111| -0.336 | 2.051  |
 
-#### 3. Bagan Regresi
+#### Bagan Regresi
 
 Program akan menampilkan bagan regresi menggunakan matplotlib.
 
-### Langkah-langkah untuk Melihat Hasil
+Untuk menyimpan bagan sebagai gambar, Anda dapat menambahkan kode berikut dalam fungsi `create_plot`:
 
-1. **Jalankan Program**: Jalankan script `regression_analysis.py` menggunakan terminal atau command prompt.
-   ```bash
-   python regression_analysis.py
-   ```
+```python
+plt.savefig('regression_plot.png')
+```
 
-2. **Lihat Output di Terminal**: Output hasil regresi akan ditampilkan di terminal.
-
-3. **Periksa File Excel**: Buka file `regression_report.xlsx` untuk melihat laporan hasil regresi dalam format Excel.
-
-4. **Lihat Bagan**: Bagan regresi akan ditampilkan dalam jendela matplotlib. Anda juga dapat menyimpan bagan tersebut dengan menambahkan kode berikut dalam fungsi `create_plot`:
-   ```python
-   plt.savefig('regression_plot.png')
-   ```
-
-Dengan langkah-langkah ini, Anda akan mendapatkan hasil analisis regresi berganda yang mencakup output di terminal, laporan dalam format Excel, dan bagan regresi. File-file tersebut dapat ditemukan di direktori tempat Anda menjalankan script.
+Dengan mengikuti tutorial ini, Anda dapat menjalankan analisis regresi berganda secara otomatis dan mendapatkan hasil yang komprehensif.
