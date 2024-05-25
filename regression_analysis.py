@@ -3,15 +3,20 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
+import os
 
 # Fungsi untuk membaca data
-def read_data(file_path):
-    if file_path.endswith('.csv'):
-        data = pd.read_csv(file_path)
-    elif file_path.endswith('.xlsx'):
-        data = pd.read_excel(file_path)
+def read_data(base_path):
+    csv_path = base_path + '.csv'
+    xlsx_path = base_path + '.xlsx'
+
+    if os.path.exists(csv_path):
+        data = pd.read_csv(csv_path)
+    elif os.path.exists(xlsx_path):
+        data = pd.read_excel(xlsx_path)
     else:
-        raise ValueError("File harus berformat .csv atau .xlsx")
+        raise ValueError("File tidak ditemukan dalam format .csv atau .xlsx")
+
     return data
 
 # Fungsi untuk melakukan regresi berganda
@@ -49,8 +54,8 @@ def create_plot(data, dependent_var, independent_vars, model):
     plt.show()
 
 # Main function
-def main(file_path, dependent_var, independent_vars, report_file_path):
-    data = read_data(file_path)
+def main(base_path, dependent_var, independent_vars, report_file_path):
+    data = read_data(base_path)
     model = multiple_regression(data, dependent_var, independent_vars)
     create_report(model, report_file_path)
     create_plot(data, dependent_var, independent_vars, model)
@@ -59,10 +64,10 @@ def main(file_path, dependent_var, independent_vars, report_file_path):
     print(model.summary())
 
 if __name__ == "__main__":
-    # Ganti dengan file path Anda
-    file_path = 'data.xlsx'
+    # Ganti dengan base path Anda (tanpa ekstensi)
+    base_path = 'data'  # Data file without extension
     dependent_var = 'Y'  # Ganti dengan nama variabel dependen Anda
     independent_vars = ['X1', 'X2', 'X3']  # Ganti dengan nama variabel independen Anda
     report_file_path = 'regression_report.xlsx'
 
-    main(file_path, dependent_var, independent_vars, report_file_path)
+    main(base_path, dependent_var, independent_vars, report_file_path)
