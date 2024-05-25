@@ -249,7 +249,7 @@ File Excel `regression_report.xlsx` akan berisi laporan hasil regresi. Contoh is
 
 Program akan menampilkan bagan regresi menggunakan matplotlib.
 
-[![demo.png]](regression_plot.png)
+![regression_plot](demo.png)
 
 Untuk menyimpan bagan sebagai gambar, Anda dapat menambahkan kode berikut dalam fungsi `create_plot`:
 
